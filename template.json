@@ -1,0 +1,25 @@
+{
+"variables": {
+       "ami_name_prefix": "{{env `AMI_NAME_PREFIX`}}"
+   },
+
+"builders": [{
+    "type": "amazon-ebs",
+    "region": "us-east-2",
+    "source_ami_filter": {
+        "filters": {
+            "virtualization-type": "hvm",
+            "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+            "root-device-type": "ebs"
+      },
+
+   "most_recent": true,
+   "owners": [ "099720109477" ]
+
+  },
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "packer-example {{timestamp}}"
+
+ }]
+}
